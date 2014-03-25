@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "WeiboSDK.h"
+@class Singleton;
+@class MyTabBarViewController;
+@interface AppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate, UITabBarControllerDelegate, UIAlertViewDelegate,WBHttpRequestDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -16,7 +18,11 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (strong, nonatomic) NSString *wbtoken;
+@property (nonatomic, retain)MyTabBarViewController * myTabVC;
+@property (nonatomic, retain)Singleton * sing;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
++ (NSInteger)OSVersion;
 @end
